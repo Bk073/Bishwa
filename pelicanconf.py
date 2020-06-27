@@ -42,7 +42,7 @@ PLUGINS = ['sitemap', 'post_stats', 'feed_summary']
 SITEURL = 'http://localhost:8000'
 SITETITLE = 'Bishwa Karki'
 SITESUBTITLE = 'Trying to share what I learned'
-SITELOGO = '/assets/img/sample/profile.png'
+SITELOGO = '/images/profile.jpg'
 # FAVICON = '/assets/img/sample/favicon.ico'
 
 # Sitemap Settings
