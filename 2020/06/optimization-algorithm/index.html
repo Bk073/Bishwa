@@ -162,30 +162,30 @@ To overcome these problems we have a Mini-batch G.D .</p>
 <h2>Exponentially Weighted Averages:</h2>
 <p>With gradient descent, we have an hyperparameter known as learning rate. When the learning rate is high then the time for optimization is decreased but there is more oscillations in the parameters during the update. While the learning rate is low then the optimization takes more time to compute. So in order to make computation faster we need to keep learning rate high but with it we must handle oscillation problem of the parameters. So to handle this we have exponentially weighted averages.</p>
 <p><img alt="exponentially_mov_avg" src="../images/exponentially_wt_avg.png"></p>
-<p>Vt = β * (Vt-1) + (1-β)*NewSample</p>
+<p>Vt = β * (Vt-1) + (1-β)*NewSample  </p>
 <p>Here the beta parameter controls how much weight to give to the N values.</p>
 <p>Simple average has higher accuracy then weighted average but the computation cost of simple average is more. So exponentially weighted average is highly suited for machine learning optimizations.</p>
 <p><strong> Gradient Descent with momentum: </strong></p>
 <p>We have seen how exponentially weighted average works, now we apply it to update the parameters which lets us use larger learning rate.</p>
 <p>On each mini-batch, we compute derivate(dw, db) of the parameters.</p>
-<p>V_dw = β * V_dw + (1-β) * dw
-V_db = β * V_db + (1-β) * db</p>
+<p>V_dw = β * V_dw + (1-β) * dw<br>
+V_db = β * V_db + (1-β) * db  </p>
 <p>Update:</p>
-<p>w := w - learning_rate * V_dw
-b := b - learning_rate * V_db</p>
+<p>w := w - learning_rate * V_dw<br>
+b := b - learning_rate * V_db  </p>
 <h2>RMS Prop:</h2>
 <p>We have gradient descent optimization, we solved it's problems and now we can use high learning rate. But there are many parameters to be learned in machine learning problems and we want the parameters with high partials derivative to be update faster while parameters with small slope to update slower. Saying that, it means we want to control update to parameters individually.</p>
-<p>S_dw = β * S_dw + (1-β) * dw<strong>2
-S_db = β * S_db + (1-β) * db</strong>2</p>
+<p>S_dw = β * S_dw + (1-β) * dw<strong>2<br>
+S_db = β * S_db + (1-β) * db</strong>2  </p>
 <p>Update:</p>
-<p>w := w - learning_rate * dw / Sqrt(S_dw)
-b := b - learning_rate * dw / Sqrt(S_db)</p>
+<p>w := w - learning_rate * dw / Sqrt(S_dw)<br>
+b := b - learning_rate * dw / Sqrt(S_db)  </p>
 <h2>ADAM:</h2>
 <p>When S_dw = 0 then RMS prop will blow up. So ADAM uses both momentum and RSM prop.</p>
-<p>V_dw = β_1 * V_dw + (1-β_1) * dw
-S_dw = β_2 * S_dw + (1-β_2) * dw**2</p>
+<p>V_dw = β_1 * V_dw + (1-β_1) * dw<br>
+S_dw = β_2 * S_dw + (1-β_2) * dw**2  </p>
 <p>Update:</p>
-<p>w := w - learning_rate * (V_dw  / Sqrt(S_dw))</p>
+<p>w := w - learning_rate * (V_dw  / Sqrt(S_dw))  </p>
   </div>
   <div class="tag-cloud">
     <p>
