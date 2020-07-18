@@ -61,7 +61,7 @@ With gradient descent, we have an hyperparameter known as learning rate. When th
 
 ![exponentially_mov_avg](../images/exponentially_wt_avg.png)
 
-Vt = β * (Vt-1) + (1-β)*NewSample
+Vt = β * (Vt-1) + (1-β)*NewSample  
 
 Here the beta parameter controls how much weight to give to the N values.
 
@@ -73,34 +73,34 @@ We have seen how exponentially weighted average works, now we apply it to update
 
 On each mini-batch, we compute derivate(dw, db) of the parameters.
 
-V_dw = β * V_dw + (1-β) * dw
-V_db = β * V_db + (1-β) * db
+V_dw = β * V_dw + (1-β) * dw  
+V_db = β * V_db + (1-β) * db  
 
 Update:
 
-w := w - learning_rate * V_dw
-b := b - learning_rate * V_db
+w := w - learning_rate * V_dw  
+b := b - learning_rate * V_db  
 
 
 ## RMS Prop:
 
 We have gradient descent optimization, we solved it's problems and now we can use high learning rate. But there are many parameters to be learned in machine learning problems and we want the parameters with high partials derivative to be update faster while parameters with small slope to update slower. Saying that, it means we want to control update to parameters individually.
 
-S_dw = β * S_dw + (1-β) * dw**2
-S_db = β * S_db + (1-β) * db**2
+S_dw = β * S_dw + (1-β) * dw**2  
+S_db = β * S_db + (1-β) * db**2  
 
 Update:
 
-w := w - learning_rate * dw / Sqrt(S_dw)
-b := b - learning_rate * dw / Sqrt(S_db)
+w := w - learning_rate * dw / Sqrt(S_dw)  
+b := b - learning_rate * dw / Sqrt(S_db)  
 
 ## ADAM:
 
 When S_dw = 0 then RMS prop will blow up. So ADAM uses both momentum and RSM prop.
 
-V_dw = β_1 * V_dw + (1-β_1) * dw
-S_dw = β_2 * S_dw + (1-β_2) * dw**2
+V_dw = β_1 * V_dw + (1-β_1) * dw  
+S_dw = β_2 * S_dw + (1-β_2) * dw**2  
 
 Update:
 
-w := w - learning_rate * (V_dw  / Sqrt(S_dw))
+w := w - learning_rate * (V_dw  / Sqrt(S_dw))  
